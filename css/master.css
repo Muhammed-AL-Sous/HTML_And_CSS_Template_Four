@@ -1,0 +1,1535 @@
+:root {
+    --blue-color: #0075ff;
+    --blue-alt-color: #0d69d5;
+    --orange-color: #f59e0b;
+    --green-color: #22c55e;
+    --red-color: #f44336;
+    --grey-color: #888;
+    --main-transition: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--blue-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--blue-alt-color);
+}
+
+/* Start Components */
+.toggle-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+.toggle-switch {
+    position: relative;
+    background-color: #ccc;
+    width: 78px;
+    height: 32px;
+    border-radius: 16px;
+    /* border 16px because height is 32px  / 2  = 16px */
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+
+.toggle-switch::before {
+    font-family: var(--fa-style-family-classic);
+    content: "\f00d";
+    font-weight: 900;
+    position: absolute;
+    background-color: white;
+    color: #aaa;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 4px;
+    /* height .toggle-switch  is 32px and height ( before ) is 24px => 32px-24px = 8px =>> 4px right & 4px left  */
+    left: 4px;
+    transition: var(--main-transition);
+}
+
+.toggle-checkbox:checked+.toggle-switch {
+    background-color: var(--blue-color);
+}
+
+.toggle-checkbox:checked+.toggle-switch::before {
+    left: 50px;
+    /* width .toggle-switch is 78px - 24px width .toggle-switch = 54px - 4px left = 50px */
+    color: var(--blue-color);
+    content: "\f00c";
+}
+
+/* <label>
+<input class="toggle-checkbox" type="checkbox">
+<div class="toggle-switch"></div>
+</label> */
+
+/* End Components */
+
+.page {
+    min-height: 100vh;
+    background-color: #f1f5f9;
+}
+
+/* Start Sidebar */
+
+.sidebar {
+    width: 250px;
+    box-shadow: 0 0 10px #ddd;
+    -webkit-box-shadow: 0 0 10px #ddd;
+    -moz-box-shadow: 0 0 10px #ddd;
+}
+
+.sidebar>h3 {
+    margin-bottom: 50px;
+}
+
+@media (min-width:768px) {
+
+    .sidebar>h3::before,
+    .sidebar>h3::after {
+        content: "";
+        background-color: black;
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+    }
+
+    .sidebar>h3::before {
+        bottom: -20px;
+        width: 80px;
+        height: 2px;
+    }
+
+    .sidebar>h3::after {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        bottom: -29px;
+        border: 4px solid white;
+    }
+}
+
+.sidebar ul li a {
+    margin-bottom: 5px;
+    transition: var(--main-transition);
+}
+
+.sidebar ul li a span {
+    margin-left: 10px;
+}
+
+@media (max-width:767px) {
+    .sidebar {
+        width: 58px;
+        padding: 10px;
+    }
+
+    .sidebar>h3 {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .sidebar ul li a span {
+        display: none;
+    }
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #fafafa;
+}
+
+/* End Sidebar */
+
+
+/* Start Content */
+
+.content {
+    overflow: hidden;
+}
+
+.content .head .search::before {
+    font-family: var(--fa-style-family-classic);
+    content: "\f002";
+    font-weight: 900;
+    color: var(--grey-color);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+}
+
+.content .head .search input {
+    padding-left: 30px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 160px;
+    transition: width var(--main-transition);
+}
+
+.content .head .search input:focus {
+    width: 200px;
+}
+
+.content .head .search input::placeholder {
+    transition: opacity 1s;
+}
+
+.content .head .search input:focus::placeholder {
+    opacity: 0;
+}
+
+.content .icons .notification::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--red-color);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.content .icons img {
+    width: 32px;
+    height: 32px;
+    margin-left: 15px;
+}
+
+.content h1 {
+    margin: 20px 20px 40px;
+}
+
+.content h1::before,
+.content h1::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: -10px;
+}
+
+.content h1::before {
+    background-color: white;
+    width: 120px;
+}
+
+.content h1::after {
+    background-color: black;
+    width: 40px;
+}
+
+.content .wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    margin: 0px 20px 20px;
+}
+
+@media (max-width:767px) {
+    .content .wrapper {
+        grid-template-columns: minmax(200px, 1fr);
+        margin: 0px 10px 10px;
+        gap: 10px;
+    }
+}
+
+/* Start Welcome Widget */
+
+.welcome {
+    overflow: hidden;
+}
+
+.welcome .intro img {
+    width: 200px;
+    margin-bottom: -10px;
+}
+
+@media (max-width:767px) {
+    .welcome .intro {
+        padding-bottom: 30px;
+    }
+}
+
+.welcome .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: -32px;
+    padding: 2px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px #ddd;
+}
+
+@media (max-width:767px) {
+    .welcome .avatar {
+        margin-left: 0;
+    }
+}
+
+.welcome .body {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.welcome .body>div {
+    flex: 1;
+}
+
+@media (max-width:767px) {
+    .welcome .body>div:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.welcome .visit {
+    margin: 0 15px 15px auto;
+    transition: var(--main-transition);
+}
+
+.welcome .visit:hover {
+    background-color: var(--blue-alt-color);
+}
+
+/* End Welcome Widget */
+
+/* Start Quick Draft Widget */
+.quick-draft textarea {
+    resize: none;
+    min-height: 180px;
+}
+
+.quick-draft .save {
+    margin-left: auto;
+    transition: var(--main-transition);
+    cursor: pointer;
+}
+
+.quick-draft .save:hover {
+    background-color: var(--blue-alt-color);
+}
+
+/* End Quick Draft Widget */
+
+/* Start Targets */
+.targets .target-row .icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.targets .target-row .details {
+    flex: 1;
+}
+
+.targets .target-row .progress {
+    height: 4px;
+}
+
+.targets .target-row .progress>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.targets .target-row .progress>span span {
+    position: absolute;
+    bottom: 16px;
+    right: -16px;
+    color: white;
+    border-radius: 6px;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.targets .target-row .progress>span span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border-color: transparent;
+    border-width: 5px;
+    border-style: solid;
+
+}
+
+.targets .target-row .progress>.blue span::after {
+    border-top-color: var(--blue-color);
+}
+
+.targets .target-row .progress>.orange span::after {
+    border-top-color: var(--orange-color);
+}
+
+.targets .target-row .progress>.green span::after {
+    border-top-color: var(--green-color);
+}
+
+.blue .icon,
+.blue .progress {
+    background-color: rgb(0 117 255 / 20%);
+}
+
+.orange .icon,
+.orange .progress {
+    background-color: rgb(245 158 11 / 20%);
+}
+
+.green .icon,
+.green .progress {
+    background-color: rgb(34 197 94 / 20%);
+}
+
+/* End Targets */
+
+/* Start Tickets */
+.tickets .box {
+    border: 1px solid #ccc;
+    width: calc(50% - 10px);
+    /* العشرة بيكسل هنا هي عبارة عن 20 غاب يعني 10 من ع يمين العنصر و 10 من على يساره  */
+}
+
+@media (max-width:767px) {
+    .tickets .box {
+        width: 100%;
+    }
+}
+
+/* End Tickets */
+
+/* Start Latest News */
+
+.latest-news .news-row:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+@media(max-width:767px) {
+    .latest-news .news-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* OR */
+
+    /* .latest-news .news-row {
+        display: block;
+    }
+
+    .latest-news .news-row .label {
+        margin: 10px auto;
+        width: fit-content;
+    } */
+}
+
+/* End Latest News */
+
+/* Start Latest Tasks */
+.latest-tasks .task-row:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+.latest-tasks .done {
+    opacity: 0.3;
+}
+
+.latest-tasks .done h3,
+.latest-tasks .done p {
+    text-decoration: line-through;
+}
+
+.latest-tasks .delete {
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+
+.latest-tasks .delete:hover {
+    color: var(--red-color);
+}
+
+/* End Latest Tasks */
+
+/* Start Top Search */
+
+.search-items .items:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+/* End Top Search */
+
+/* Start Latest Uploads */
+
+.Latest-uploads .latest-items:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+.Latest-uploads .latest-items img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* End Latest Uploads */
+
+/* Start Latest Project */
+.Last-Project ul::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    left: 11px;
+    background-color: var(--blue-color);
+}
+
+.Last-Project ul li:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid white;
+    outline: 2px solid var(--blue-color);
+    margin-right: 15px;
+    z-index: 1;
+}
+
+.Last-Project ul li.done::before {
+    background-color: var(--blue-color);
+}
+
+.Last-Project ul li.current::before {
+    animation: change-color 0.8s infinite alternate;
+    /* في حال لم نضع الترنيت هنا فانه سيومض بسرعة كبيرة ولن يفي بالمطلوب */
+}
+
+/* Start Animation */
+@keyframes change-color {
+    from {
+        background-color: var(--blue-color);
+    }
+
+    to {
+        background-color: white;
+    }
+}
+
+/* End Animation */
+
+.Last-Project img {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    bottom: 0;
+    right: 0;
+    opacity: 0.5;
+}
+
+@media (max-width:395px) {
+    .Last-Project ul {
+        font-size: 12px;
+    }
+
+    .Last-Project ul::before {
+        height: 90%;
+    }
+}
+
+@media (max-width:767px) {
+    .Last-Project img {
+        display: none;
+    }
+}
+
+/* End Latest Project */
+
+/* Start Reminder Widget */
+.reminders ul li .key {
+    width: 15px;
+    height: 15px;
+}
+
+.reminders ul li>.blue {
+    border-left: 2px solid var(--blue-color);
+}
+
+.reminders ul li>.green {
+    border-left: 2px solid var(--green-color);
+}
+
+.reminders ul li>.orange {
+    border-left: 2px solid var(--orange-color);
+}
+
+.reminders ul li>.red {
+    border-left: 2px solid var(--red-color);
+}
+
+/* End Reminder Widget */
+
+/* Start Latest Post */
+
+.latest-post .top .avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 15px;
+}
+
+.latest-post .post-content {
+    text-transform: capitalize;
+    line-height: 1.8;
+    min-height: 140px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/* End Latest Post */
+
+/* Start Social Media  */
+.social-media .box {
+    padding-left: 70px;
+    overflow: hidden;
+}
+
+.social-media .box i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 52px;
+    transition: var(--main-transition);
+}
+
+.social-media .box i:hover {
+    transform: rotate(5deg);
+}
+
+.social-media .twitter {
+    background-color: rgb(29 161 242 / 20%);
+    color: #1da1f2;
+}
+
+.social-media .twitter i,
+.social-media .twitter a {
+    background-color: #1da1f2;
+}
+
+.social-media .facebook {
+    background-color: rgb(24 119 242 / 20%);
+    color: #1877f2;
+}
+
+.social-media .facebook i,
+.social-media .facebook a {
+    background-color: #1877f2;
+}
+
+.social-media .youtube {
+    background-color: rgb(255 0 0 / 20%);
+    color: #ff0000;
+}
+
+.social-media .youtube i,
+.social-media .youtube a {
+    background-color: #ff0000;
+}
+
+.social-media .linkedin {
+    background-color: rgb(10 102 194 / 20%);
+    color: #0a66c2;
+}
+
+.social-media .linkedin i,
+.social-media .linkedin a {
+    background-color: #0a66c2;
+}
+
+/* End Social Media  */
+
+/* Start Projects Table */
+.projects .responsive-table {
+    overflow-x: auto;
+}
+
+.projects table {
+    min-width: 1000px;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.projects table td {
+    padding: 15px;
+}
+
+.projects table thead td {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.projects table tbody td {
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    transition: var(--main-transition);
+}
+
+.projects table tbody tr td:last-child {
+    border-right: 1px solid #eee;
+}
+
+.projects table tbody tr:hover td {
+    background-color: #faf7f7;
+}
+
+.projects table img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: white;
+}
+
+.projects table img:not(:first-child) {
+    margin-left: -20px;
+}
+
+.projects table .label {
+    font-size: 13px;
+}
+
+/* End Projects Table */
+
+/* --------------------------------------------------------- */
+
+/* Start Settings */
+
+.settings-page {
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+@media (max-width:767px) {
+    .settings-page {
+        grid-template-columns: minmax(100px, 1fr);
+        gap: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+/* Strat Site Control */
+
+.settings-page .close-message {
+    min-height: 150px;
+    resize: none;
+    border: 1px solid #ccc;
+}
+
+/* End Site Control */
+
+/* Start General Info */
+
+.settings-page .email {
+    display: inline-flex;
+    width: calc(100% - 80px);
+}
+
+.settings-page :disabled {
+    background-color: #f0f4f8;
+    color: #bbb;
+    cursor: no-drop;
+}
+
+/* End General Info */
+
+/* Start Security Info */
+.settings-page .sec-box {
+    padding-bottom: 15px;
+}
+
+.settings-page .sec-box:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+.sec-box .button {
+    transition: var(--main-transition);
+}
+
+.sec-box .button:hover {
+    background-color: var(--blue-alt-color);
+}
+
+/* End Security Info */
+
+
+/* Start Social Info */
+.settings-page .social-boxes i {
+    width: 40px;
+    height: 40px;
+    background-color: #f6f6f6;
+    border: 1px solid #ddd;
+    border-radius: 6px 0 0 6px;
+    border-right: none;
+    transition: var(--main-transition);
+}
+
+.settings-page .social-boxes input {
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 0 6px 6px 0;
+    padding-left: 10px;
+    background-color: #f6f6f6;
+    transition: var(--main-transition);
+}
+
+.settings-page .social-boxes>div:focus-within i.twitter {
+    color: #1da1f2;
+}
+
+.settings-page .social-boxes input[placeholder="twitter UserName"] {
+    caret-color: #1da1f2;
+}
+
+.settings-page .social-boxes>div:focus-within i.facebook {
+    color: #1877f2;
+}
+
+.settings-page .social-boxes input[placeholder="facebook UserName"] {
+    caret-color: #1877f2;
+}
+
+.settings-page .social-boxes>div:focus-within i.linkedin {
+    color: #0a66c2;
+}
+
+.settings-page .social-boxes input[placeholder="linkedin UserName"] {
+    caret-color: #0a66c2;
+}
+
+.settings-page .social-boxes>div:focus-within i.youtube {
+    color: #ff0000;
+}
+
+.settings-page .social-boxes input[placeholder="youtube UserName"] {
+    caret-color: #ff0000;
+}
+
+/* End Social Info */
+
+/* Start Widgets Control */
+
+.settings-page .Widgets-Control .control input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.settings-page .Widgets-Control .control label {
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.settings-page .Widgets-Control .control label::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border: 2px solid var(--grey-color);
+    border-radius: 4px;
+    height: 14px;
+    width: 14px;
+    margin-top: -9px;
+    /* height the before is 18px / 2 = 9px I want to move it up. ==> -9px */
+}
+
+.settings-page .Widgets-Control .control label:hover::before {
+    border-color: var(--blue-alt-color);
+}
+
+.settings-page .Widgets-Control .control label::after {
+    font-family: var(--fa-style-family-classic);
+    content: "\f00c";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: white;
+    background-color: var(--blue-color);
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0) rotate(1turn);
+    transition: var(--main-transition);
+}
+
+.settings-page .Widgets-Control .control input[type="checkbox"]:checked+label::after {
+    transform: scale(1);
+}
+
+/* End Widgets Control */
+
+/* Start Backup Manager */
+
+.settings-page .backup-control input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.settings-page .backup-control .date label {
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.settings-page .backup-control .date label:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--grey-color);
+    margin-top: -11px;
+    /* height before is 22px (18px height + 4px border) / 2 = 11px I want to move it up ==> -11px */
+    border-radius: 50%;
+}
+
+.settings-page .backup-control .date label::after {
+    content: "";
+    position: absolute;
+    /* height + width before is 22px - height + width after 12px = 10px ==> left 5px & top 5px */
+    top: 5px;
+    left: 5px;
+    background-color: var(--blue-color);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: var(--main-transition);
+    transform: scale(0);
+}
+
+.settings-page .backup-control .date input[type="radio"]:checked+label::before {
+    border-color: var(--blue-color);
+}
+
+.settings-page .backup-control .date input[type="radio"]:checked+label::after {
+    transform: scale(1);
+}
+
+.settings-page .servers {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+@media (max-width:767px) {
+    .settings-page .servers {
+        flex-wrap: wrap;
+    }
+}
+
+.settings-page .servers .server {
+    border: 2px solid #eee;
+}
+
+.settings-page .servers .server label {
+    cursor: pointer;
+}
+
+.settings-page .servers input[type="radio"]:checked+.server {
+    border-color: var(--blue-color);
+    color: var(--blue-color);
+}
+
+/* End Backup Manager */
+/* End Settings */
+/* --------------------------------------------------------- */
+
+/* Start profile page */
+
+@media (max-width:767px) {
+    .profile-page .overview {
+        flex-direction: column;
+    }
+}
+
+.profile-page .overview .avatar-box {
+    width: 300px;
+}
+
+@media (min-width:768px) {
+    .profile-page .overview .avatar-box {
+        border-right: 1px solid #eee;
+    }
+}
+
+.profile-page .overview img {
+    width: 120px;
+    height: 120px;
+}
+
+.profile-page .overview .level {
+    height: 6px;
+    margin: auto;
+    width: 70%;
+    overflow: hidden;
+}
+
+.profile-page .overview .level span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 6px;
+    background-color: var(--blue-color);
+}
+
+.profile-page .overview .info-box .box {
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eee;
+    transition: var(--main-transition);
+}
+
+.profile-page .overview .info-box .box:hover {
+    background-color: #f9f9f9;
+}
+
+.profile-page .overview .info-box .box>div {
+    min-width: 250px;
+    padding: 10px 0 0;
+}
+
+.profile-page .info-box .toggle-switch {
+    height: 20px;
+    /* height all div = 30px but 10px padding top => 30px total height - 10px padding top = 20px just height  */
+}
+
+.profile-page .info-box .toggle-switch::before {
+    width: 12px;
+    height: 12px;
+    /* 20px height - 8px top & bottom = 12px  */
+    font-size: 8px;
+}
+
+.profile-page .info-box .toggle-checkbox:checked+.toggle-switch::before {
+    left: 62px;
+    /* 78px width - 12px = 66px - 4px left = 62px */
+}
+
+@media (max-width:767px) {
+    .profile-page .other-data {
+        flex-direction: column;
+    }
+}
+
+.profile-page .other-data .skills-card {
+    flex-grow: 1;
+}
+
+.profile-page .other-data .skills-card ul li {
+    padding: 15px 0;
+}
+
+.profile-page .other-data .skills-card ul li:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.profile-page .other-data .skills-card ul li span {
+    display: inline-flex;
+    font-size: 14px;
+    padding: 4px 10px;
+    background-color: #eee;
+    border-radius: 6px;
+}
+
+.profile-page .other-data .skills-card ul li span:not(:last-child) {
+    margin-right: 5px;
+}
+
+.profile-page .other-data .activities {
+    flex-grow: 2;
+}
+
+@media (max-width:767px) {
+    .profile-page .other-data .activities .activity {
+        flex-direction: column;
+    }
+}
+
+.profile-page .activities .activity:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.profile-page .activities .activity img {
+    width: 64px;
+    height: 64px;
+    margin-right: 15px;
+}
+
+@media (max-width:767px) {
+    .profile-page .activities .activity img {
+        margin: 0 0 15px;
+    }
+}
+
+.profile-page .activities .activity .date {
+    margin-left: auto;
+    text-align: center;
+}
+
+@media (max-width:767px) {
+    .profile-page .activities .activity .date {
+        margin: 15px auto;
+        text-align: center;
+    }
+}
+
+/* End profile page */
+/* --------------------------------------------------------- */
+
+/* Start Projects Page */
+.projects-page {
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+@media (max-width:767px) {
+    .projects-page {
+        grid-template-columns: minmax(200px, 1fr);
+        gap: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.projects-page .date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.projects-page .team {
+    min-height: 80px;
+}
+
+.projects-page .team a {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.projects-page .team a:nth-child(2) {
+    left: 25px;
+}
+
+.projects-page .team a:nth-child(3) {
+    left: 50px;
+}
+
+.projects-page .team a:nth-child(4) {
+    left: 75px;
+}
+
+.projects-page .team a:nth-child(5) {
+    left: 100px;
+}
+
+.projects-page .team a:hover {
+    z-index: 1000;
+}
+
+.projects-page .team a>img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.projects-page .do {
+    justify-content: flex-end;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+@media (max-width:767px) {
+    .projects-page .do {
+        flex-direction: column;
+    }
+
+    .projects-page .do li:not(:last-child) {
+        margin-bottom: 15px;
+    }
+}
+
+.projects-page .do li {
+    margin-left: 5px;
+}
+
+.projects-page .info {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+@media (max-width:767px) {
+    .projects-page .info {
+        flex-direction: column;
+    }
+}
+
+.projects-page .info .prog {
+    position: relative;
+    height: 8px;
+    width: 260px;
+}
+
+@media (max-width:767px) {
+    .projects-page .info .prog {
+        margin-bottom: 15px;
+    }
+}
+
+.projects-page .info .prog span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+/* End Projects Page */
+/* --------------------------------------------------------- */
+
+/* Start Courses Page */
+.courses-page {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+@media (max-width:767px) {
+    .courses-page {
+        grid-template-columns: minmax(200px, 1fr);
+        margin-right: 10px;
+        margin-left: 10px;
+        gap: 10px;
+    }
+}
+
+.courses-page .course {
+    overflow: hidden;
+}
+
+.courses-page .course .cover {
+    max-width: 100%;
+}
+
+.courses-page .course .instructor {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid white;
+    top: 20px;
+    left: 20px;
+}
+
+.courses-page .course .description {
+    line-height: 1.6;
+}
+
+.courses-page .course .info {
+    border-top: 1px solid #eee;
+}
+
+.courses-page .course .info .title {
+    position: absolute;
+    left: 50%;
+    top: -14px;
+    /* لتوسيط العنصر جعلنا له ارتفاع 27 و البوردر 1 بيكسل يعني 28 بيكسل نصفها 14*/
+    height: 27px;
+    transform: translateX(-50%);
+}
+
+/* End Courses Page */
+/* --------------------------------------------------------- */
+
+/* Start Friends Page */
+.friends-page {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+@media (max-width:767px) {
+    .friends-page {
+        grid-template-columns: minmax(200px, 1fr);
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 10px;
+    }
+}
+
+.friends-page .contact {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.friends-page .contact i {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+
+.friends-page .contact i:hover {
+    background-color: var(--blue-color);
+    color: white;
+}
+
+.friends-page .friend .icons {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.friends-page .friend .icons i {
+    margin-right: 5px;
+}
+
+.friends-page .friend .icons .vip {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    opacity: 0.2;
+}
+
+/* End Friends Page */
+/* --------------------------------------------------------- */
+
+/* Start Files Page */
+.files-page {
+    flex-direction: row-reverse;
+    /* لجعل الاحصائيات على اليمين و الفايلات على اليسار */
+    align-items: flex-start;
+    /* في حال عدم وجودها سيكون هناك ستريتش بقسم الاحصائيات على طول الصفحة */
+}
+
+@media (max-width:767px) {
+    .files-page {
+        flex-direction: column;
+        align-items: normal;
+        /* في حال عدم وجودها ستكون العناصر على اليسار يعني في البداية كما هو في الشاشات الكبير*/
+    }
+}
+
+.files-page .files-stats {
+    min-width: 260px;
+}
+
+.files-page .files-stats .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.files-page .files-stats .size {
+    margin-left: auto;
+}
+
+.files-page .files-stats .blue {
+    background-color: rgb(0 117 255 / 20%);
+}
+
+.files-page .files-stats .green {
+    background-color: rgb(34 197 94 / 20%);
+}
+
+.files-page .files-stats .red {
+    background-color: rgb(244 67 54 / 20%);
+}
+
+.files-page .files-stats .orange {
+    background-color: rgb(245 158 11 / 20%);
+}
+
+.files-page .files-stats .upload {
+    margin: 15px auto 0;
+    padding: 10px 15px;
+    transition: var(--main-transition);
+}
+
+.files-page .files-stats .upload:hover {
+    background-color: var(--blue-alt-color);
+}
+
+.files-page .files-stats .upload:hover i {
+    animation: go-up 0.8s infinite;
+}
+
+/* Start Animation go-up */
+@keyframes go-up {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.files-page .files-content {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    flex: 1;
+    /* في حال عدم وجودها فالعناصر ستكون تحت بعضها وليس بقرب بعضها */
+}
+
+.files-page .files-content .file img {
+    width: 64px;
+    height: 64px;
+    transition: var(--main-transition);
+}
+
+.files-page .files-content .file:hover img {
+    transform: rotate(5deg);
+}
+
+.files-page .files-content .file .info {
+    border-top: 1px solid #eee;
+}
+
+/* End Animation go-up */
+
+/* End Files Page */
+/* --------------------------------------------------------- */
+
+/* Start Plans Page */
+.plans-page {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+}
+
+@media (max-width:767px) {
+    .plans-page {
+        grid-template-columns: minmax(250px, 1fr);
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 10px;
+    }
+}
+
+.plans-page .plan .top {
+    border: 3px solid white;
+    outline: 3px solid transparent;
+}
+
+.plans-page .plan.green .top {
+    outline-color: var(--green-color);
+}
+
+.plans-page .plan.blue .top {
+    outline-color: var(--blue-color);
+}
+
+.plans-page .plan.orange .top {
+    outline-color: var(--orange-color);
+}
+
+.plans-page .plan .top .price {
+    position: relative;
+    font-size: 40px;
+    width: fit-content;
+    /* في حال عدم وجودها ستذهب ال$ الى آخر المحتوى ولن تكون قريبة من المبلغ*/
+    margin: auto;
+}
+
+.plans-page .plan .top .price span {
+    position: absolute;
+    left: -20px;
+    top: 0;
+    font-size: 25px;
+}
+
+.plans-page .plan ul li {
+    padding: 15px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.plans-page .plan ul li .yes {
+    color: var(--green-color);
+}
+
+.plans-page .plan ul li i:not(.yes, .help) {
+    color: var(--red-color);
+}
+
+.plans-page .plan ul li i:first-child {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.plans-page .plan ul li .help {
+    color: var(--grey-color);
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.plans-page .plan a {
+    margin: 10px auto 0px;
+    padding: 10px 30px;
+}
+
+/* End Plans Page */
+/* --------------------------------------------------------- */
+
+/* End Content */
