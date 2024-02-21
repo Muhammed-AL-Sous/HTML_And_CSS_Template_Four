@@ -501,6 +501,7 @@ a {
 
 .Latest-uploads .latest-items:not(:last-of-type) {
     border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
 }
 
 .Latest-uploads .latest-items img {
