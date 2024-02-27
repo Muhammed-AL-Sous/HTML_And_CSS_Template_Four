@@ -1057,6 +1057,14 @@ a {
     /* 78px width - 12px = 66px - 4px left = 62px */
 }
 
+@media (max-width: 767px) {
+
+    /* For center toggle */
+    .profile-page .info-box .toggle-switch {
+        margin: auto;
+    }
+}
+
 @media (max-width:767px) {
     .profile-page .other-data {
         flex-direction: column;
